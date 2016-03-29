@@ -1,0 +1,22 @@
+{
+    "name": "asbsoft/yii2-restapi_v0",
+    "description": "REST API test version 0",
+    "keywords": ["yii2", "rest"],
+    "type": "yii2-module",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Alexandr Belogolovsky",
+            "email": "ab2014box@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "yiisoft/yii2": ">=2.0.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "asb\\yii2\\modules\\restapi_v0\\": ""
+        }
+    }
+}

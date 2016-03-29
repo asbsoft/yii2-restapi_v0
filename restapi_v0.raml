@@ -1,0 +1,203 @@
+#%RAML 1.0
+
+# @author    Alexandr Belogolovsky <ab2014box@gmail.com>
+
+title: Test of REST API
+version: v0
+mediaType:  application/json
+
+types:
+  User:
+    type: object
+    properties:
+      id:
+        required: true
+        type: integer
+      login_email:
+        required: true
+        type: string
+        minLength: 3
+        maxLength: 20
+      password_hash:
+        required: true
+        type: string
+      auth_key:
+        required: true
+        type: string
+      access_token:
+        required: true
+        type: string
+      token_expired: datetime
+      create_time: datetime
+      update_time: datetime
+  Post:
+    type: object
+    properties:
+      id:
+        required: true
+        type: integer
+      user_id:
+        description: Owner
+        required: true
+        type: integer
+      text:
+        required: true
+        type: string
+      create_time: datetime
+      update_time: datetime
+
+{prefix}/users:
+  uriParameters:
+    prefix:
+      description: Base URL to REST API
+    queryParameters:
+      login:
+        type: string
+      password:
+        type: string
+    post:
+      responses:
+        201:
+          description: Create new user and get access token for him
+          body:
+            application/json:
+              type: object
+              properties:
+                id:
+                  type: number
+                access_token:
+                  type: string
+                token_expired:
+                  type: datetime
+        403:
+          properties:
+            error:
+              description: User already exists
+        422:
+          properties:
+            error:
+              description: Data Validation Failed
+    get:
+      description: Get access token for existing user
+      responses:
+        200:
+          body:
+            application/json:
+              type: object
+              properties:
+                id:
+                  type: number
+                access_token:
+                  type: string
+                token_expired:
+                  type: datetime
+        404:
+          properties:
+            error:
+              description: User with such login and password not found
+
+{prefix}/posts:
+  uriParameters:
+    prefix:
+      description: Base URL to REST API
+
+  get:
+    description: Get posts list
+    queryParameters:
+      page:
+        description: Page number
+        required: false
+        type: integer
+        default: 1
+      sort:
+        description: Sort field with direction
+        required: false
+        enum: [ id, -id, create_time, -create_time, update_time, -update_time ]
+      text:
+        description: Substring to find post by text
+        required: false
+        type: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Post[]
+        headers:
+          X-Pagination-Total-Count:
+            description: Total posts count for authorized user
+          X-Pagination-Page-Count:
+            description: Total page count
+          X-Pagination-Current-Page:
+            description: Current page
+          X-Pagination-Per-Page:
+            description: Posts per page
+      401:
+        properties:
+          error:
+            description: Unauthorized
+
+  post:
+    description: Create new post
+      body:
+        type: Post
+      responses:
+        201:
+          body:
+            application/json:
+              type: Post
+        401:
+          properties:
+            error:
+              description: Unauthorized
+
+  delete:
+    description: Try to delete all posts
+    responses:
+      405:
+        description: Not allowed
+
+  /{postId}:
+    uriParameters:
+      postId:
+        description: Post ID
+        type: integer
+    responses:
+      401:
+        properties:
+          error:
+            description: Unauthorized
+      403:
+        properties:
+          error:
+            description: Forbidden access to alien post
+      404:
+        properties:
+          error:
+            description: Post not found
+
+    get:
+      description: |
+         Get a specific post.
+         This feature is not found in tasks but add to support update function.
+      responses:
+        200:
+          body:
+            application/json:
+              type: Post
+
+    put:
+      description: Update a specific post
+      body:
+        type: Post
+      responses:
+        200:
+          body:
+            application/json:
+              type: Post
+
+    delete:
+      description: Delete a specific post
+      responses:
+        204:
+          description: Deletion OK
+
