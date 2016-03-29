@@ -31,23 +31,23 @@ Usage
           ],
       ],
 
-- Run migrations to create data tables and fill them by test data:
-    yii migrate/up --migrationPath=@app/migrations
+- Apply migration to create data tables and fill tables by test data:
+    yii migrate/up --migrationPath=%PATH_TO_MODULE%/migrations
+  where %PATH_TO_MODULE% is directory @vendor/asbsoft/modules/restapi_v0,
 
-- If you use 'test_data' migration users table has some test users with login/password:
+- If you apply 'test_data' migration users table will have some test users with such login/password:
   - tester@example.com/test1234
   - user@example.com/user1234
-  and posts table has some test posts.
+  and posts table will have some test posts.
 
-- You can use installed module immediately
-  just run http://%BASE_URL% in you browser
+- You can use installed module immediately just run http://%BASE_URL% in you browser
   where %BASE_URL% is base URL of you Yii2-site.
-  Module replace start URL of you site for demo purpose.
+  This module replace start URL of you site for demo purpose.
   You can change in 'params' of this module 'changeStartPage' => false
-  and use it by http://%BASE_URL%/testapi not from start page.
+  and use module by full link http://%BASE_URL%/testapi/auth not from start page.
   You can change URL prefix 'urlPrefix' => 'testapi' in module params too.
 
-- Here there is simple form for registration new users and get access token.
+- There is simple form here for registration new users and get access token.
   Also this test form allow to list/create/update/view post(s).
 
 - You can test this API from command line by curl:
