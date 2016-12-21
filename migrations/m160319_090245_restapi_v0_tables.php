@@ -1,20 +1,35 @@
 <?php
-/**
- * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
- * @copyright Copyright (c) 2016, Alexandr Belogolovsky
- */
+
+use asb\yii2\modules\restapi_v0\models\User;
+use asb\yii2\modules\restapi_v0\models\Post;
 
 use yii\db\Schema;
 use yii\db\Migration;
 use yii\db\Expression;
 
+/**
+ * @author Alexandr Belogolovsky <ab2014box@gmail.com>
+ */
 class m160319_090245_restapi_v0_tables extends Migration
 {
-    protected $tableUser = '{{%user}}';
-    protected $idxUser   = 'idx-user';
+    protected $tableUser;
+    protected $idxUser;
 
-    protected $tablePost = '{{%post}}';
-    protected $idxPost   = 'idx-post';
+    protected $tablePost;
+    protected $idxPost;
+
+    public function init()
+    {
+        parent::init();
+
+        Yii::setAlias('@asb/yii2/modules', '@vendor/asb/yii2modules');
+
+        $this->tableUser = User::tableName();
+        $this->idxUser   = 'idx-' . User::TABLE_NAME;
+
+        $this->tablePost = Post::tableName();
+        $this->idxPost   = 'idx-' . Post::TABLE_NAME;
+    }
 
     public function safeUp()
     {

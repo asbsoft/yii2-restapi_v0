@@ -15,12 +15,14 @@ use yii\db\ActiveRecord;
  */
 class Post extends ActiveRecord
 {
+    const TABLE_NAME = 'post';
+
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%post}}';
+        return '{{%' . self::TABLE_NAME . '}}';
     }
 
     /**

@@ -19,6 +19,8 @@ use asb\yii2\modules\restapi_v0\Module;
  */
 class User extends \yii\db\ActiveRecord
 {
+    const TABLE_NAME = 'user';
+
     const SCENARIO_SAVE = 'save';
 
     public $captcha_code;
@@ -48,7 +50,7 @@ class User extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%' . self::TABLE_NAME . '}}';
     }
 
     /**
