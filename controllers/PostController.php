@@ -71,7 +71,7 @@ class PostController extends ActiveController
      */
     public function checkAccess($action, $model = null, $params = [])
     {
-        $userId = Yii::$app->user->identity->id;
+        $userId = $this->module->user->identity->id;
 
         switch ($action) {
             case 'index':

@@ -1,6 +1,5 @@
 <?php
 /**
- * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
  * @copyright Copyright (c) 2016, Alexandr Belogolovsky
  */
 
@@ -12,8 +11,13 @@ use yii\helpers\ArrayHelper;
 
 use asb\yii2\modules\restapi_v0\models\UserIdentity;
 
+/**
+ * @author Alexandr Belogolovsky <ab2014box@gmail.com>
+ */
 class Module extends BaseModule
 {
+    public $user;
+    
     public function init()
     {
         parent::init();
@@ -21,8 +25,8 @@ class Module extends BaseModule
         $params = include(__DIR__ . '/config/params.php');
         $this->params = ArrayHelper::merge($params, $this->params);
 
-        Yii::$app->user->enableSession = false;
-        Yii::$app->user->identityClass = UserIdentity::className();
-
+        $this->user = Yii::$app->user;
+        $this->user->enableSession = false;
+        $this->user->identityClass = UserIdentity::className();
     }
 }
