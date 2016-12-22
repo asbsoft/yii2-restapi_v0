@@ -1,8 +1,4 @@
 <?php
-/**
- * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
- * @copyright Copyright (c) 2016, Alexandr Belogolovsky
- */
 
 namespace asb\yii2\modules\restapi_v0\controllers;
 
@@ -17,6 +13,9 @@ use asb\yii2\modules\restapi_v0\models\PostSearch;
 
 use asb\yii2\modules\restapi_v0\controllers\post\CreateAction;
 
+/**
+ * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
+ */
 class PostController extends ActiveController
 {
     public $pageSize = 10; // default if not define in config
@@ -62,6 +61,7 @@ class PostController extends ActiveController
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => QueryParamAuth::className(),
+            'user' => $this->module->user,
         ];
         return $behaviors;
     }

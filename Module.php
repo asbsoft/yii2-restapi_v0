@@ -25,7 +25,7 @@ class Module extends BaseModule
         $params = include(__DIR__ . '/config/params.php');
         $this->params = ArrayHelper::merge($params, $this->params);
 
-        $this->user = Yii::$app->user;
+        $this->user = clone Yii::$app->user;
         $this->user->enableSession = false;
         $this->user->identityClass = UserIdentity::className();
     }
