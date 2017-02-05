@@ -33,7 +33,7 @@ class FrontendController extends \yii\web\Controller
     {
         $model = new User();
         $params = [];
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->validate(['login_email', 'password', 'captcha_code'])) {
             $login = $model->login_email;
             $passwordHash = User::getPasswordHash($model->password, $model->login_email);

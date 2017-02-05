@@ -2,6 +2,7 @@
 namespace asb\yii2\modules\restapi_v0\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 use asb\yii2\modules\restapi_v0\Module;
 
@@ -17,9 +18,9 @@ use asb\yii2\modules\restapi_v0\Module;
  * @property string $create_time
  * @property string $update_time
  */
-class User extends \yii\db\ActiveRecord
+class User extends ActiveRecord
 {
-    const TABLE_NAME = 'user';
+    const TABLE_NAME = 'test_restapi_user';
 
     const SCENARIO_SAVE = 'save';
 

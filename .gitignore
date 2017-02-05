@@ -1,0 +1,10 @@
+
+# ignored files
+*~.*
+
+# old/depricated files
+*-.*
+
+# new/todo files
+*+.*
+

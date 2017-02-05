@@ -15,7 +15,7 @@ use yii\db\ActiveRecord;
  */
 class Post extends ActiveRecord
 {
-    const TABLE_NAME = 'post';
+    const TABLE_NAME = 'test_restapi_post';
 
     /**
      * @inheritdoc

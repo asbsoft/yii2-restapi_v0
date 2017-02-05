@@ -36,31 +36,34 @@ class Bootstrap implements BootstrapInterface
                     break;
                 }
             }
+        } else {
+            $module = $app->getModule($this->moduleUid);
+            $params = $module->params;
         }
-        $params = ArrayHelper::merge($paramsHere, $params);
+        $params = ArrayHelper::merge($paramsHere, $params);//var_dump($params);
+
         $this->urlPrefix = empty($params['urlPrefix']) ? $this->urlPrefix : $params['urlPrefix'];
 
         if (empty($this->moduleUid)) {
             $message = "Not found 'moduleUid' in configuration of module " . Module::className();//
-            echo "{$message}<br>";
             //throw new \Exception($message);
+            echo "{$message}<br>";
             Yii::error($message);
             return;
         }
 
         if (!empty($params['changeStartPage']) && $params['changeStartPage']) {
-            Yii::$app->defaultRoute = $this->moduleUid . '/frontend/auth';
-        }
+            $app->defaultRoute = $this->moduleUid . '/frontend/auth';
+        }//var_dump($app->defaultRoute);
 
-        Yii::$app->urlManager->enablePrettyUrl = true;
+        $app->urlManager->enablePrettyUrl = true;
         $urlPrefix = $this->urlPrefix;
-        $moduleUid  = $this->moduleUid;
-        $routes = include(__DIR__ . '/config/routes-front.php');
-        Yii::$app->urlManager->addRules($routes, false);
-        //var_dump(Yii::$app->urlManager->rules[2]->rules['posts']);
+        $moduleUid = $this->moduleUid;
+        $routes = include(__DIR__ . '/config/routes-front.php'); // file use vars $urlPrefix, $moduleUid
+        $app->urlManager->addRules($routes, false);//var_dump($app->urlManager->rules);
 
-        Yii::$app->request->parsers = ArrayHelper::merge(
-            Yii::$app->request->parsers
+        $app->request->parsers = ArrayHelper::merge(
+            $app->request->parsers
           , ['application/json' => 'yii\web\JsonParser']
         );
 
