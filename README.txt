@@ -12,8 +12,9 @@ Usage
   and tune configs in @app/config/ folder:
     - add to file web.php before latest operator "return $config;" such strings
         $config['aliases']['@asb/yii2'] = '@vendor/asbsoft'; // if module in @vendor/asbsoft/modules/restapi_v0/
-        $config['bootstrap'][] = 'asb\yii2\modules\restapi_v0\Bootstrap';
-        $config['modules']['restapi0'] = [
+        $moduleId = 'restapi0';
+        $config['bootstrap'][] = $moduleId;
+        $config['modules'][$moduleId] = [
             'class' => 'asb\yii2\modules\restapi_v0\Module',
             'params' => [ // you can change some parameters here - they override default module parameters
                 //'changeStartPage' => false,   // default = true for change site startpage to this module startpage
@@ -27,11 +28,11 @@ Usage
     - web.php - don't forget to fill cookieValidationKey:
       'components' => [
           'request' => [
-              'cookieValidationKey' => '...', // !!! insert a secret key here (if it is empty)
+              'cookieValidationKey' => '...', // insert a secret key here (if it is empty)
           ],
       ],
 
-- Apply migration to create data tables and fill tables by test data:
+- Apply migrations to create data tables and fill tables by test data:
     yii migrate/up --migrationPath=%PATH_TO_MODULE%/migrations
   where %PATH_TO_MODULE% is directory @vendor/asbsoft/modules/restapi_v0,
 

@@ -1,6 +1,8 @@
 
 # ignored files
 *~.*
+.git/
+!url.txt
 
 # old/depricated files
 *-.*
