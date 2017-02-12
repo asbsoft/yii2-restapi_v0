@@ -1,7 +1,7 @@
 <?php
+
 /**
  * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
- * @copyright Copyright (c) 2016, Alexandr Belogolovsky
  */
 
     $this->registerJs("

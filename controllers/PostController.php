@@ -2,19 +2,18 @@
 
 namespace asb\yii2\modules\restapi_v0\controllers;
 
+use asb\yii2\modules\restapi_v0\models\UserIdentity;
+use asb\yii2\modules\restapi_v0\models\Post;
+use asb\yii2\modules\restapi_v0\models\PostSearch;
+use asb\yii2\modules\restapi_v0\controllers\post\CreateAction;
+
 use Yii;
 use yii\rest\ActiveController;
 use yii\filters\auth\QueryParamAuth;
 use yii\web\ForbiddenHttpException;
 
-use asb\yii2\modules\restapi_v0\models\UserIdentity;
-use asb\yii2\modules\restapi_v0\models\Post;
-use asb\yii2\modules\restapi_v0\models\PostSearch;
-
-use asb\yii2\modules\restapi_v0\controllers\post\CreateAction;
-
 /**
- * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
+ * @author Alexandr Belogolovsky <ab2014box@gmail.com>
  */
 class PostController extends ActiveController
 {

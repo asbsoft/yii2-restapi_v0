@@ -1,7 +1,7 @@
 <?php
+
 /**
- * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
- * @copyright Copyright (c) 2016, Alexandr Belogolovsky
+ * @author Alexandr Belogolovsky <ab2014box@gmail.com>
  */
 
 /* @var $this yii\web\View */
@@ -9,12 +9,12 @@
 /* @var $model asb\yii2\modules\restapi_v0\models\User */
 /* @var $params array */
 
+use asb\yii2\modules\restapi_v0\assets\FrontAsset;
+
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
-
-use asb\yii2\modules\restapi_v0\assets\FrontAsset;
 
 $assets = FrontAsset::register($this);
 

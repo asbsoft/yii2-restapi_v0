@@ -1,8 +1,4 @@
 <?php
-/**
- * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
- * @copyright Copyright (c) 2016, Alexandr Belogolovsky
- */
 
 namespace asb\yii2\modules\restapi_v0\controllers\post;
 
@@ -12,6 +8,9 @@ use yii\helpers\Url;
 use yii\web\ServerErrorHttpException;
 use yii\rest\CreateAction as RestCreateAction;
 
+/**
+ * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
+ */
 class CreateAction extends RestCreateAction
 {
     /**

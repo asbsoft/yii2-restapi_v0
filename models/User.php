@@ -1,10 +1,11 @@
 <?php
+
 namespace asb\yii2\modules\restapi_v0\models;
+
+use asb\yii2\modules\restapi_v0\Module;
 
 use Yii;
 use yii\db\ActiveRecord;
-
-use asb\yii2\modules\restapi_v0\Module;
 
 /**
  * This is the model class for table "{{%user}}".

@@ -1,10 +1,9 @@
 <?php
-/**
- * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
- * @copyright Copyright (c) 2016, Alexandr Belogolovsky
- */
 
 namespace asb\yii2\modules\restapi_v0\controllers;
+
+use asb\yii2\modules\restapi_v0\models\User;
+use asb\yii2\modules\restapi_v0\controllers\user\CreateAction;
 
 use Yii;
 use yii\rest\ActiveController;
@@ -13,9 +12,9 @@ use yii\db\Expression;
 use yii\web\NotFoundHttpException;
 use yii\web\ForbiddenHttpException;
 
-use asb\yii2\modules\restapi_v0\models\User;
-use asb\yii2\modules\restapi_v0\controllers\user\CreateAction;
-
+/**
+ * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
+ */
 class UserController extends ActiveController
 {
     /**

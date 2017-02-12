@@ -7,7 +7,6 @@ use yii\db\Schema;
 use yii\db\Migration;
 use yii\db\Expression;
 
-
 /**
  * @author Alexandr Belogolovsky <ab2014box@gmail.com>
  */

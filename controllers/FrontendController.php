@@ -1,16 +1,15 @@
 <?php
-/**
- * @author    Alexandr Belogolovsky <ab2014box@gmail.com>
- * @copyright Copyright (c) 2016, Alexandr Belogolovsky
- */
 
 namespace asb\yii2\modules\restapi_v0\controllers;
+
+use asb\yii2\modules\restapi_v0\models\User;
 
 use Yii;
 use yii\db\Expression;
 
-use asb\yii2\modules\restapi_v0\models\User;
-
+/**
+ * @author Alexandr Belogolovsky <ab2014box@gmail.com>
+ */
 class FrontendController extends \yii\web\Controller
 {
     public function actions()
