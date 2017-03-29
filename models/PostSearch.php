@@ -1,4 +1,5 @@
 <?php
+
 namespace asb\yii2\modules\restapi_v0\models;
 
 use Yii;
