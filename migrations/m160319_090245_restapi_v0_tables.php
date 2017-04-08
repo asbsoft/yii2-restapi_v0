@@ -7,6 +7,8 @@ use yii\db\Schema;
 use yii\db\Migration;
 use yii\db\Expression;
 
+//Yii::setAlias('@asb/yii2/modules', '@vendor/asbsoft/yii2modules');
+
 /**
  * @author Alexandr Belogolovsky <ab2014box@gmail.com>
  */
@@ -21,8 +23,6 @@ class m160319_090245_restapi_v0_tables extends Migration
     public function init()
     {
         parent::init();
-
-        Yii::setAlias('@asb/yii2/modules', '@vendor/asb/yii2modules');
 
         $this->tableUser = User::tableName();
         $this->idxUser   = 'idx-' . User::TABLE_NAME;
