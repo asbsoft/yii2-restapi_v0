@@ -5,7 +5,6 @@ use asb\yii2\modules\restapi_v0\models\Post;
 
 use yii\db\Schema;
 use yii\db\Migration;
-use yii\db\Expression;
 
 //Yii::setAlias('@asb/yii2/modules', '@vendor/asbsoft/yii2modules');
 
@@ -34,8 +33,10 @@ class m160319_090245_restapi_v0_tables extends Migration
     public function safeUp()
     {
         $tableOptions = null;
-        $now = new Expression('NOW()');
-
+        if ($this->db->driverName === 'mysql') {
+            // http://stackoverflow.com/questions/766809/whats-the-difference-between-utf8-general-ci-and-utf8-unicode-ci
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+        }
         $this->createTable($this->tableUser, [
             'id' => $this->primaryKey(),
             'login_email' => $this->string(25)->unique()->notNull(),
